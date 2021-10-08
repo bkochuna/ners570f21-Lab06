@@ -30,6 +30,10 @@ Tests for these will include
 * Test that the column/row/element array are all of length equal to the number of elements in the matrix.
 * Test that the elements in the index arrays are the same as the known arrays.
 ## BCRS Format
+* Generate a dense matrix with known column/row indices for each element
+* Create the matrix using the BCRS function
+* Test that the blocks match the associated blocks 
+* Depending on our implementation, we also test against different block sizes, make sure that if the block size is 1 we reach csr in the limit
 
 ## JDS Format
 * Generate a dense matrix with known diagonal value and column index arrays
