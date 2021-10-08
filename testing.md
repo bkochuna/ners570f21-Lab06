@@ -1,5 +1,4 @@
 # General testing for every format
-
 ## Sparse matrix vector multiplication interface
 Tests for these will include
 * identity matrix with vector and make sure it returns the vector
@@ -9,27 +8,37 @@ Tests for these will include
 * a random matrix and random vector checked against a simple dense matrix vector multiplication (setting the random seed at the beginning of the test to ensure reproducibility)
 
 ## Single/double precision
-* For testing single and double precision use compiler directives to specify single or double precision at compile time to generate single and double precision tests. This way each format is tested for the same things, but  
-* Check input and output types of each are as expected (this may or may not compile depending on if compilation quits when types are cast)
+* Define a testing class that is templated to define whether or not to use single or double precision data types
+* This approach will allow us to run all the tests with both double and single precision types without duplicating any of the code
 
 ## Unit/integration tests for each matrix format
-* Generate some sparse matrix and directly store it. Store the matrix in each of the listed formats and compare.
+* Generate some sparse matrix and store it in each of the specified matrix formats—compare the matrices to make sure each format looks identical from outside the class
 * Test accessing and setting of nonzero entries
 * Test accessing and setting of zero entries
 * Test setting nonzero entries to zero and check that the values are removed from the stored data
-
+* Test setting additional nonzero entries
 
 # Format-specific tests
 ## COO Format
 * Generate a dense matrix with known column and row index arrays for each element
 * Create the matrix using the COO function
+* Test that the column/row/element arrays are all of length equal to the number of elements in the matrix.
 * Test that the elements of the column and row index arrays generate the same as the predetermined arrays.
 ## CRS Format
 * Generate a dense matrix with known column and row index arrays for each element
 * Create the matrix using the CRS function
+* Test that the column/row/element array are all of length equal to the number of elements in the matrix.
 * Test that the elements in the index arrays are the same as the known arrays.
 ## BCRS Format
 
 ## JDS Format
+* Generate a dense matrix with known diagonal value and column index arrays
+* Create the matrix using the JDS function
+* Check the size of the diagonal value and column index arrays are the same and match the size of the predetermined arrays.
+* Test that the elements in the diagonal value and column index array match with the predetermined arrays.
 
 ## ELLPACK Format
+* Generate a dense matrix with known column and row index arrays for each element
+* Create the matrix using ELLPACK function
+* Check that the size of the column index matrix to make sure that it is a square matrix with number of rows/columns equal to the size of the dense matrix
+* Check that the values in the matrix of value math the dense matrix exactly.
