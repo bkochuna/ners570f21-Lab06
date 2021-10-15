@@ -14,4 +14,4 @@ This repository is for an educational exercise that is a part of NERS570 course 
 
 # How to use boost
 - mac: `brew install boost boost-python3`
-- greatlakes: `module load gcc cmake boost`
+- greatlakes: `module load gcc cmake boost python`
