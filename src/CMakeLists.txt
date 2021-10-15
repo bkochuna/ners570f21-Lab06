@@ -27,9 +27,9 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${${PROJECT_NAME}_INCLUDE_DIRS
 # Allows this to be used by super projects with `add_subdirectory`
 if (BUILD_PYTHON)
   # Find python and Boost - both are required dependencies
-  find_package(PythonLibs 3.9 REQUIRED)
-  find_package(Boost COMPONENTS python REQUIRED)
-
+  find_package(PythonInterp 3)
+  find_package(PythonLibs 3 REQUIRED)
+  find_package(Boost COMPONENTS python3 REQUIRED)
   # Without this, any build libraries automatically have names "lib{x}.so"
   set(CMAKE_SHARED_MODULE_PREFIX "")
 
