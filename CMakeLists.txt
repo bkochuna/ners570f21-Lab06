@@ -13,6 +13,10 @@ include(add_unit_test)
 
 hello("Some directory")
 
+# Python Wrapper config
+option (BUILD_PYTHON "Build the Python Wrapper." ON)
+set(PYTHON_PROJECT_NAME ${PROJECT_NAME}py)
+
 # Code Coverage Configuration
 add_library(coverage_config INTERFACE)
 option(CODE_COVERAGE "Enable coverage reporting" OFF)

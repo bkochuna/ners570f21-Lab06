@@ -21,8 +21,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install lcov
-        run: sudo apt-get install -y lcov
+      - name: Install lcov and libboost
+        run: sudo apt-get install -y lcov libboost-dev
+
+      - name: Install Python 3
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
       - name: Configure CMake
         # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
@@ -33,18 +43,23 @@ jobs:
         # Build your program with the given configuration
         run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
-      - name: Test
+      - name: Test Library
         working-directory: ${{github.workspace}}/build
         # Execute tests defined by the CMake configuration.
         # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
         run: ctest -C ${{env.BUILD_TYPE}} --output-on-failure
 
+      - name: Test PythonWrapper
+        working-directory: ${{github.workspace}}/build
+        run: PYTHONPATH="$PYTHONPATH:$(pwd)/src" pytest ../
+
       - name: Run lcov
         run: |
           lcov --directory . --capture --output-file coverage.info
           # filter out system and extra files.
-          lcov --remove coverage.info -o coverage.info '*/usr/*' '*/test/*' "${HOME}"'/.cache/*'
-          lcov --list coverage.info # debug info
+          lcov --remove coverage.info -o coverage.info '*/usr/*' '*/test/*' "${HOME}"'/.cache/*' '*pythonWrap.cpp'
+          # debug
+          # lcov --list coverage.info # debug info
           # Uploading to CodeCov
           # '-f' specifies file(s) to use and disables manual coverage gathering and file search which has already been done above
           # bash <(curl -s https://codecov.io/bash) -f coverage.info || echo "Codecov did not collect coverage reports"
