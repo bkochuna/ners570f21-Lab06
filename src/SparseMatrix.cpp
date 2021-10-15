@@ -1,4 +1,4 @@
-#include "hello.hpp"
+#include "SparseMatrix.hpp"
 
 namespace spmv
 {
