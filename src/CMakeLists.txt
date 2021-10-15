@@ -29,7 +29,7 @@ if (BUILD_PYTHON)
   # Find python and Boost - both are required dependencies
   find_package(PythonInterp 3)
   find_package(PythonLibs 3 REQUIRED)
-  find_package(Boost COMPONENTS python3 REQUIRED)
+  find_package(Boost COMPONENTS python REQUIRED)
   # Without this, any build libraries automatically have names "lib{x}.so"
   set(CMAKE_SHARED_MODULE_PREFIX "")
 
