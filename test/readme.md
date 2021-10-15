@@ -1,10 +1,15 @@
 # Running tests
 
-To run all tests, enter the `test` directory and run the `run_tests.sh` shell script.
+To run all tests, configure with tests (enabled by default right now) and then:
+* `make`
+* `make test`
 
 # Adding tests
 
-To add tests, create a new file whose filename begins with `test` and ends with `.cpp` (the test will not be identified by `run_tests.sh` if this is not the case). Any number of tests can be added to a single file. Add tests in the following format:
+To add tests, create a new file whose filename begins with `test_` and ends with `.cpp` for naming convention purposes.
+Any number of tests can be added to a single file.
+Each file should have one call to `TEST_MAIN()` at the bottom.
+Add tests in the following format:
 
 ```
 #include "unit_testing_framework.h"
@@ -20,9 +25,12 @@ TEST(<second test name here>) {
 }
 
 ...
+
+TEST_MAIN()
 ```
 
-**Use `FP_TYPE` in the place of `float` or `double` when instantiating variables (or sparse matrices) that are meant to be tested with both single and double precision.** For example, one test case that uses this may look like
+**Use `FP_TYPE` in the place of `float` or `double` when instantiating variables (or sparse matrices) that are meant to be tested with both single and double precision.**
+For example, one test case that uses this may look like
 
 ```
 TEST(fp_equal) {
@@ -59,4 +67,5 @@ A number of assert statements are available to use in the tests:
 
 ## More information
 
-This test framework is based on the EECS 280 open source unit testing framework. Their documentation can be found [here](https://eecs280staff.github.io/unit_test_framework/) and the source code can be found [here](https://github.com/eecs280staff/unit_test_framework).
+This test framework is based on the EECS 280 open source unit testing framework.
+Their documentation can be found [here](https://eecs280staff.github.io/unit_test_framework/) and the source code can be found [here](https://github.com/eecs280staff/unit_test_framework).
