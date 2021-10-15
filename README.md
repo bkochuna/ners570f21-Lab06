@@ -3,4 +3,5 @@ This repository is for an educational exercise that is a part of NERS570 course 
 
 [![Build Status][travis-badge]][travis-link]
 [![codecov][codecov-badge]][codecov-link]
-[![MIT License][license-badge]](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
