@@ -38,11 +38,11 @@ A number of assert statements are available to use in the tests:
 
 `ASSERT_EQUAL(first, second)`
 * If `first == second` evaluates to false, the test will fail.
-* `first` and `second` may be any type
+* `first` and `second` may be any type with the `==` operator defined.
 
 `ASSERT_NOT_EQUAL(first, second)`
 * If `first != second` evaluates to false, the test will fail.
-* `first` and `second` may be any type
+* `first` and `second` may be any type with the `==` operator defined.
 
 `ASSERT_TRUE(bool value)`
 * If `value` is false, the test will fail.
