@@ -1,5 +1,6 @@
 #include "hello.hpp"
 #include <sstream>
+#include <cassert>
 
 using namespace spmv;
 
