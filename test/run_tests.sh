@@ -15,11 +15,11 @@ printf "\nTEST_MAIN()\n" >> "$f"
 echo "=============================================================="
 echo "                    Single precision tests                    "
 echo "=============================================================="
-g++ -Wall -Werror -pedantic -g -std=c++11 -DFP_TYPE=float "$f" -o test_single.exe
+g++ -Wall -Werror -pedantic -g -Ofast -std=c++11 -DFP_TYPE=float "$f" -o test_single.exe
 ./test_single.exe
 printf "\n"
 echo "=============================================================="
 echo "                    Double precision tests                    "
 echo "=============================================================="
-g++ -Wall -Werror -pedantic -g -std=c++11 -DFP_TYPE=double "$f" -o test_double.exe
+g++ -Wall -Werror -pedantic -g -Ofast -std=c++11 -DFP_TYPE=double "$f" -o test_double.exe
 ./test_double.exe
