@@ -6,7 +6,7 @@ To run all tests, configure with tests (enabled by default right now) and then:
 
 # Adding tests
 
-To add tests, create a new file whose filename begins with `test_` and ends with `.cpp` for naming convention purposes.
+To add tests, create a new file whose filename begins with `test_` and ends with `.cpp`, the latter of which is required for the testing framework.
 Any number of tests can be added to a single file.
 Each file should have one call to `TEST_MAIN()` at the bottom.
 Add tests in the following format:
@@ -39,6 +39,18 @@ TEST(fp_equal) {
     ASSERT_ALMOST_EQUAL(a, b, 0.0001);
 }
 ```
+
+After you have a source file with the test you want, you must add that source file to the `CMakeLits.txt` file. 
+This can be done in one line using the `add_unit_test` macro:
+
+```
+...
+add_unit_test(example_test)
+...
+```
+
+The name passed into the macro is the file name without the `.cpp` extension.
+The macro will create targets for both single and double precision and add the appropriate tests.
 
 ## Assert statements
 
