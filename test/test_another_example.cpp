@@ -14,3 +14,5 @@ TEST(test_almost_equal) {
   ASSERT_ALMOST_EQUAL(a, b, 0.0001);
   ASSERT_TRUE(b - a > 0);
 }
+
+TEST_MAIN()

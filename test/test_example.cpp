@@ -18,3 +18,5 @@ TEST(not_equal_int) {
   int n = 2;
   ASSERT_EQUAL(m, n);
 }
+
+TEST_MAIN()
