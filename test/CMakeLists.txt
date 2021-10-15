@@ -20,5 +20,6 @@ add_test(NAME testHello_test
 
 # Set additional pass/fail conditions for test, other than return code
 set_tests_properties(testHello_test PROPERTIES
-    PASS_REGULAR_EXPRESSION "Hello World"
+    PASS_REGULAR_EXPRESSION "Called SparseMatrix Constructor"
+    PASS_REGULAR_EXPRESSION "Called SparseMatrix Destructor"
 )
