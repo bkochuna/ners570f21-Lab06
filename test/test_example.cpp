@@ -1,17 +1,20 @@
 #include "unit_test_framework.h"
+#include <vector>
 
-TEST(test_pass) {
-  ASSERT_TRUE(true);
+TEST(vector_compare) {
+  std::vector<FP_TYPE> a = {1, 2, 3};
+  std::vector<FP_TYPE> b = {1, 2, 3};
+  ASSERT_SEQUENCE_EQUAL(a, b);
 }
 
-TEST(test_fail) {
-  ASSERT_TRUE(false);
+TEST(equal_int) {
+  int m = 2;
+  int n = 2;
+  ASSERT_EQUAL(m, n);
 }
 
-TEST(test_almost_equal) {
-  FP_TYPE x = 1.;
-  FP_TYPE y = 1.0000001;
-  ASSERT_ALMOST_EQUAL(x, y, 0.0001);
+TEST(not_equal_int) {
+  int m = 2;
+  int n = 2;
+  ASSERT_EQUAL(m, n);
 }
-
-TEST_MAIN() // No semicolon!

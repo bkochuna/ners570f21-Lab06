@@ -454,7 +454,7 @@ void TestCase::print(bool quiet_mode) {
         std::cout << name << ": ";
     }
     else {
-        std::cout << "** Test case \"" << name << "\": ";
+        std::cout << name << ": ";
     }
 
     if (not failure_msg.empty()) {
@@ -512,10 +512,9 @@ int TestSuite::run_tests(int argc, char** argv) {
     }
 
     for (auto test_name : test_names_to_run) {
-        tests_.at(test_name).run(quiet_mode);
+        tests_.at(test_name).run(true);
     }
 
-    std::cout << "\n*** Results ***" << std::endl;
     for (auto test_name : test_names_to_run) {
         tests_.at(test_name).print(quiet_mode);
     }
@@ -532,7 +531,7 @@ int TestSuite::run_tests(int argc, char** argv) {
                       });
 
     if (not quiet_mode) {
-        std::cout << "*** Summary ***" << std::endl;
+        std::cout << "\n*** Summary ***" << std::endl;
         std::cout << "Out of " << test_names_to_run.size()
                   << " tests run:" << std::endl;
         std::cout << num_failures << " failure(s), " << num_errors
