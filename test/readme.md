@@ -6,9 +6,9 @@ To run all tests, configure with tests (enabled by default right now) and then:
 
 # Adding tests
 
-To add tests, create a new file whose filename begins with `test_` and ends with `.cpp`, the latter of which is required for the testing framework.
+To add a new testing file create a new C++ file (with a `.cpp` extension) and append `add_unit_test(<filename>)` to `test/CMakeLists.txt` where `<filename>` is the test filename without the `.cpp` extension.
 Any number of tests can be added to a single file.
-Each file should have one call to `TEST_MAIN()` at the bottom.
+Each test file should have one call to `TEST_MAIN()` at the bottom.
 Add tests in the following format:
 
 ```
