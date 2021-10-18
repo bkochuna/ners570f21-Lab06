@@ -13,13 +13,16 @@ include(add_unit_test)
 
 hello("Some directory")
 
+# Define default value for config option for testing (default to on)
 if(NOT DEFINED SpMV_ENABLE_TESTING)
-    set(SpMV_ENABLE_TESTING ON)
+  set(SpMV_ENABLE_TESTING ON)
 endif()
 
+# Process package
 add_subdirectory(src)
 
+# Process testing
 if(SpMV_ENABLE_TESTING)
-    enable_testing()
-    add_subdirectory(test)
+  enable_testing()
+  add_subdirectory(test)
 endif()
