@@ -23,3 +23,7 @@ set_tests_properties(testSparseMatrix_test PROPERTIES
     PASS_REGULAR_EXPRESSION "Called SparseMatrix Constructor"
     PASS_REGULAR_EXPRESSION "Called SparseMatrix Destructor"
 )
+
+add_unit_test(test_example)
+add_unit_test(test_another_example)
+
