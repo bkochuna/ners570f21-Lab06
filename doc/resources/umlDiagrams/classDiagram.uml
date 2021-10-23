@@ -18,88 +18,88 @@ SparseMatrix : + matVec()
 SparseMatrix : + getFormat()
 
 ' Sub-classes
-SparseMatrix <|-- SparseMatrix_COO
-SparseMatrix <|-- SparseMatrix_ELLPACK
-SparseMatrix <|-- SparseMatrix_CRS
-SparseMatrix <|-- SparseMatrix_BCRS
-SparseMatrix <|-- SparseMatrix_JDS
+SparseMatrix <|-- SparseMatrixCOO
+SparseMatrix <|-- SparseMatrixELLPACK
+SparseMatrix <|-- SparseMatrixCRS
+SparseMatrix <|-- SparseMatrixBCRS
+SparseMatrix <|-- SparseMatrixJDS
 
 ' -------------------------------- COO Format ------------------------------- '
-class SparseMatrix_COO
+class SparseMatrixCOO
 
 ' Attributes
-SparseMatrix_COO : - aij[]
-SparseMatrix_COO : - idx_col[]
-SparseMatrix_COO : - idx_row[]
+SparseMatrixCOO : - aij[]
+SparseMatrixCOO : - idx_col[]
+SparseMatrixCOO : - idx_row[]
 
 ' Methods
-SparseMatrix_COO : - convertToELLPACK()
-SparseMatrix_COO : - convertFromELLPACK()
+SparseMatrixCOO : - convertToELLPACK()
+SparseMatrixCOO : - convertFromELLPACK()
 
 ' Relationships
-SparseMatrix_ELLPACK *-- SparseMatrix_COO
+SparseMatrixELLPACK --* SparseMatrixCOO
 
 ' -------------------------------- CRS Format ------------------------------- '
-class SparseMatrix_CRS
+class SparseMatrixCRS
 
 ' Attributes
-SparseMatrix_CRS : - aij[]
-SparseMatrix_CRS : - ia[]
-SparseMatrix_CRS : - ja[]
+SparseMatrixCRS : - aij[]
+SparseMatrixCRS : - ia[]
+SparseMatrixCRS : - ja[]
 
 ' Methods
-SparseMatrix_CRS : - convertToELLPACK()
-SparseMatrix_CRS : - convertFromELLPACK()
+SparseMatrixCRS : - convertToELLPACK()
+SparseMatrixCRS : - convertFromELLPACK()
 
 ' Relationships
-SparseMatrix_ELLPACK *-- SparseMatrix_CRS 
+SparseMatrixELLPACK --* SparseMatrixCRS 
 
 ' ------------------------------- BCRS Format ------------------------------- '
-class SparseMatrix_BCRS
+class SparseMatrixBCRS
 
 ' Attributes
-SparseMatrix_BCRS : - nblk
-SparseMatrix_BCRS : - aij[][][]
-SparseMatrix_BCRS : - ia[]
-SparseMatrix_BCRS : - ja[]
+SparseMatrixBCRS : - nblk
+SparseMatrixBCRS : - aij[][][]
+SparseMatrixBCRS : - ia[]
+SparseMatrixBCRS : - ja[]
 
 ' Methods
-SparseMatrix_BCRS : - convertFromELLPACK()
-SparseMatrix_BCRS : - convertToELLPACK()
+SparseMatrixBCRS : - convertFromELLPACK()
+SparseMatrixBCRS : - convertToELLPACK()
 
 ' Relationships
-SparseMatrix_ELLPACK *-- SparseMatrix_BCRS 
+SparseMatrixELLPACK --* SparseMatrixBCRS 
 
 ' ------------------------------ ELLPACK Format ----------------------------- '
-class SparseMatrix_ELLPACK
+class SparseMatrixELLPACK
 
 ' Attributes
-SparseMatrix_ELLPACK : - maxnz_row
-SparseMatrix_ELLPACK : - aij[]
-SparseMatrix_ELLPACK : - ja[][]
+SparseMatrixELLPACK : - maxnz_row
+SparseMatrixELLPACK : - aij[]
+SparseMatrixELLPACK : - ja[][]
 
 ' Methods
-SparseMatrix_ELLPACK : - convertToCOO()
-SparseMatrix_ELLPACK : - convertToCRS()
-SparseMatrix_ELLPACK : - convertToBCRS()
-SparseMatrix_ELLPACK : - convertToJDS()
+SparseMatrixELLPACK : - convertToCOO()
+SparseMatrixELLPACK : - convertToCRS()
+SparseMatrixELLPACK : - convertToBCRS()
+SparseMatrixELLPACK : - convertToJDS()
 
 ' Relationships
 
 ' -------------------------------- JDS Format ------------------------------- '
-class SparseMatrix_JDS
+class SparseMatrixJDS
 
 ' Attributes
-SparseMatrix_JDS : - perm[]
-SparseMatrix_JDS : - jdiag[]
-SparseMatrix_JDS : - col_ind[]
-SparseMatrix_JDS : - jd_ptr[]
+SparseMatrixJDS : - perm[]
+SparseMatrixJDS : - jdiag[]
+SparseMatrixJDS : - col_ind[]
+SparseMatrixJDS : - jd_ptr[]
 
 ' Methods
-SparseMatrix_JDS : - convertFromELLPACK()
-SparseMatrix_JDS : - convertToELLPACK()
+SparseMatrixJDS : - convertFromELLPACK()
+SparseMatrixJDS : - convertToELLPACK()
 
 'Relationships
-SparseMatrix_ELLPACK *-- SparseMatrix_JDS
+SparseMatrixELLPACK --* SparseMatrixJDS
 
 @enduml

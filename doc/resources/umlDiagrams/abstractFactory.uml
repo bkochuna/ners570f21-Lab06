@@ -7,34 +7,34 @@ object Client
 interface SparseMatrixFactory
 
 ' Methods
-SparseMatrixFactory : + CreateSparseMatFromCOO(int idx_col[], int idx_row[], <precision> aij[]) : SparseMatrix
-SparseMatrixFactory : + CreateSparseMatFromCRS(int ia[], int ja[], <precision> aij[]) : SparseMatrix
-SparseMatrixFactory : + CreateSparseMatFromBCRS(int nblk, int ia[], int ja[], <precision> aij[]) : SparseMatrix
-SparseMatrixFactory : + CreateSparseMatFromELLPACK(int maxnz_row, int ja[][], <precision> aij[]) : SparseMatrix
-SparseMatrixFactory : + CreateSparseMatFromJDS(int perm[], <precision> jdiag[], int col_ind[], <precision>* jd_ptr[] ) : SparseMatrix
+SparseMatrixFactory : + createSparseMatFromCOO(int idx_col[], int idx_row[], <precision> aij[]) : SparseMatrix
+SparseMatrixFactory : + createSparseMatFromCRS(int ia[], int ja[], <precision> aij[]) : SparseMatrix
+SparseMatrixFactory : + createSparseMatFromBCRS(int nblk, int ia[], int ja[], <precision> aij[]) : SparseMatrix
+SparseMatrixFactory : + createSparseMatFromELLPACK(int maxnz_row, int ja[][], <precision> aij[]) : SparseMatrix
+SparseMatrixFactory : + createSparseMatFromJDS(int perm[], <precision> jdiag[], int col_ind[], <precision>* jd_ptr[] ) : SparseMatrix
 
 ' --------------------------- Sparse Matrix Classes ------------------------- '
 abstract class SparseMatrix
-SparseMatrix_COO : + SparseMatrix_COO()
-SparseMatrix_CRS : + SparseMatrix_CRS()
-SparseMatrix_BCRS : + SparseMatrix_BCRS()
-SparseMatrix_ELLPACK : + SparseMatrix_ELLPACK()
-SparseMatrix_JDS : + SparseMatrix_JDS()
+SparseMatrixCOO : + sparseMatrixCOO()
+SparseMatrixCRS : + sparseMatrixCRS()
+SparseMatrixBCRS : + sparseMatrixBCRS()
+SparseMatrixELLPACK : + sparseMatrixELLPACK()
+SparseMatrixJDS : + sparseMatrixJDS()
 
 ' -------------------------------- Associations ----------------------------- '
 Client ..> SparseMatrixFactory : <<use>> 
 Client ..> SparseMatrix : <<use>>
 
-SparseMatrixFactory <|.. SparseMatrix_COO
-SparseMatrixFactory <|.. SparseMatrix_CRS
-SparseMatrixFactory <|.. SparseMatrix_BCRS
-SparseMatrixFactory <|.. SparseMatrix_ELLPACK
-SparseMatrixFactory <|.. SparseMatrix_JDS
+SparseMatrixFactory <|.. SparseMatrixCOO
+SparseMatrixFactory <|.. SparseMatrixCRS
+SparseMatrixFactory <|.. SparseMatrixBCRS
+SparseMatrixFactory <|.. SparseMatrixELLPACK
+SparseMatrixFactory <|.. SparseMatrixJDS
 
-SparseMatrix_COO -|> SparseMatrix
-SparseMatrix_CRS -|> SparseMatrix
-SparseMatrix_BCRS -|> SparseMatrix
-SparseMatrix_ELLPACK -|> SparseMatrix
-SparseMatrix_JDS -|> SparseMatrix
+SparseMatrixCOO -|> SparseMatrix
+SparseMatrixCRS -|> SparseMatrix
+SparseMatrixBCRS -|> SparseMatrix
+SparseMatrixELLPACK -|> SparseMatrix
+SparseMatrixJDS -|> SparseMatrix
 
 @enduml
