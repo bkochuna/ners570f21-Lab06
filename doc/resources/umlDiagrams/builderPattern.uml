@@ -1,0 +1,19 @@
+@startuml
+
+' ---------------------------------- Client --------------------------------- '
+class Client <<Director >>
+
+' ------------------------- Sparse Matrix Interface ------------------------- '
+interface SparseMatrix.setCoefficients << Builder >> 
+interface SparseMatrix.assemble << ConcreteBuilder >>
+
+' ------------------------------- Associations ------------------------------ '
+SparseMatrix.setCoefficients <. SparseMatrix.assemble : requires
+Client ..> SparseMatrix.setCoefficients : uses >
+note right of Client : repeated calls to setCoefficients()
+
+' ------------------------------ Concrete Class ----------------------------- '
+class ConcreteSparseMatrix
+SparseMatrix.assemble ..> ConcreteSparseMatrix : modifies internal storage
+
+@enduml

@@ -1,0 +1,105 @@
+@startuml
+
+' ------------------------------ Abstract Class ----------------------------- '
+abstract class "SparseMatrix"
+
+' Attributes
+SparseMatrix : - nz
+SparseMatrix : - ncol
+SparseMatrix : - nrow
+SparseMatrix : ~ precision
+
+' Methods
+SparseMatrix : + SparseMatrix()
+SparseMatrix : + ~SparseMatrix()
+SparseMatrix : + setCoefficients()
+SparseMatrix : + {abstract} assemble()
+SparseMatrix : + matVec()
+SparseMatrix : + getFormat()
+
+' Sub-classes
+SparseMatrix <|-- SparseMatrix_COO
+SparseMatrix <|-- SparseMatrix_ELLPACK
+SparseMatrix <|-- SparseMatrix_CRS
+SparseMatrix <|-- SparseMatrix_BCRS
+SparseMatrix <|-- SparseMatrix_JDS
+
+' -------------------------------- COO Format ------------------------------- '
+class SparseMatrix_COO
+
+' Attributes
+SparseMatrix_COO : - aij[]
+SparseMatrix_COO : - idx_col[]
+SparseMatrix_COO : - idx_row[]
+
+' Methods
+SparseMatrix_COO : - convertToELLPACK()
+SparseMatrix_COO : - convertFromELLPACK()
+
+' Relationships
+SparseMatrix_ELLPACK *-- SparseMatrix_COO
+
+' -------------------------------- CRS Format ------------------------------- '
+class SparseMatrix_CRS
+
+' Attributes
+SparseMatrix_CRS : - aij[]
+SparseMatrix_CRS : - ia[]
+SparseMatrix_CRS : - ja[]
+
+' Methods
+SparseMatrix_CRS : - convertToELLPACK()
+SparseMatrix_CRS : - convertFromELLPACK()
+
+' Relationships
+SparseMatrix_ELLPACK *-- SparseMatrix_CRS 
+
+' ------------------------------- BCRS Format ------------------------------- '
+class SparseMatrix_BCRS
+
+' Attributes
+SparseMatrix_BCRS : - nblk
+SparseMatrix_BCRS : - aij[][][]
+SparseMatrix_BCRS : - ia[]
+SparseMatrix_BCRS : - ja[]
+
+' Methods
+SparseMatrix_BCRS : - convertFromELLPACK()
+SparseMatrix_BCRS : - convertToELLPACK()
+
+' Relationships
+SparseMatrix_ELLPACK *-- SparseMatrix_BCRS 
+
+' ------------------------------ ELLPACK Format ----------------------------- '
+class SparseMatrix_ELLPACK
+
+' Attributes
+SparseMatrix_ELLPACK : - maxnz_row
+SparseMatrix_ELLPACK : - aij[]
+SparseMatrix_ELLPACK : - ja[][]
+
+' Methods
+SparseMatrix_ELLPACK : - convertToCOO()
+SparseMatrix_ELLPACK : - convertToCRS()
+SparseMatrix_ELLPACK : - convertToBCRS()
+SparseMatrix_ELLPACK : - convertToJDS()
+
+' Relationships
+
+' -------------------------------- JDS Format ------------------------------- '
+class SparseMatrix_JDS
+
+' Attributes
+SparseMatrix_JDS : - perm[]
+SparseMatrix_JDS : - jdiag[]
+SparseMatrix_JDS : - col_ind[]
+SparseMatrix_JDS : - jd_ptr[]
+
+' Methods
+SparseMatrix_JDS : - convertFromELLPACK()
+SparseMatrix_JDS : - convertToELLPACK()
+
+'Relationships
+SparseMatrix_ELLPACK *-- SparseMatrix_JDS
+
+@enduml

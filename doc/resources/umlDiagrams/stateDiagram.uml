@@ -1,0 +1,17 @@
+@startuml
+
+' ---------------------------- Constructor Begin ---------------------------- '
+[*] --> Initialized : SparseMatrix Constructor
+Initialized -> Building : setCoefficients() 
+
+' ------------------------------ Building State ----------------------------- '
+Building -> Building : setCoefficients()
+Building --> Assembled : assemble()
+
+' ----------------------------- Assembling State ---------------------------- '
+Assembled --> Building : setCoefficients()
+Assembled --> [*] : getFormat ()
+
+' ----------------------------- Constructor End ----------------------------- '
+
+@enduml
