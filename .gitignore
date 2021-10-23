@@ -1,0 +1,9 @@
+# Documentation Files
+*doc/sphinx/build/*
+*doc/sphinx/source/_build/*
+*doc/sphinx/source/_static/*
+*doc/sphinx/source/_templates/*
+
+
+# Other
+**.vscode/

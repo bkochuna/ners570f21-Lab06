@@ -1,0 +1,4 @@
+.. _cmake:
+
+CMake Documentation
+===================
