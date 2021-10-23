@@ -17,12 +17,12 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Sparse Matrix Vector Multiplication Interface'
+project = 'SpMV'
 copyright = '2021, NERS 570 - Fall2021'
 author = 'NERS 570 - Fall2021'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1'
+release = '0.1.0'
 
 
 # -- General configuration ---------------------------------------------------
