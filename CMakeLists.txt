@@ -25,3 +25,20 @@ if(SpMV_ENABLE_TESTING)
   enable_testing()
   add_subdirectory(test)
 endif()
+
+
+# Packaging support
+
+include(CPack)
+
+set(CPACK_PACKAGE_VENDOR "NERS570")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Sparse Matrix Library developed by NERS 570 class")
+set(CPACK_PACKAGE_VERSION_MAJOR ${0.1})
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENCE")
+set(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
+
+set(CPACK_SOURCE_GENERATOR "TGZ;ZIP")
+set(CPACK_SOURCE_IGNORE_FILES
+    /.git 
+    /\\\\.DS_Store
+)
