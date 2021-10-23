@@ -17,11 +17,7 @@ cmake /path/to/source/dir
 make
 ```
 
-This compiles the entire SpMV library and tests. To run the tests you can call
-
-```console
-make test
-```
+This compiles the entire SpMV library and tests. 
 
 ### Configure options
 Shuai is still working on this
@@ -32,6 +28,14 @@ The configure step generates various targets that you can build with make. You c
 
 ```console
 make help
+```
+
+Below is a list of what each target accomplishes
+```console
+make help     # Lists possible targets to be built
+make spmv     # Builds SpMV libraries
+make test     # Runs test
+make clean    # Cleans directory of build files
 ```
 
 ### Installer packages
