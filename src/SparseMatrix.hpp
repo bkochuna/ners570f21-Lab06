@@ -32,7 +32,7 @@ class SparseMatrix
             a binary tree containing the [i, j] coordinates of non zero entries in the key and values in the values.
 
         */
-        virtual void setCoefficients(const std::map< std::pair<size_t,size_t> , fp_type > buildCoeff) = 0;
+        virtual void setCoefficients(const std::map< std::pair<size_t,size_t> , fp_type > &buildCoeff) = 0;
 
         /* 
           Function : matVec
