@@ -2,7 +2,7 @@
 
 ## Documentation
 ### Sphinx
-The documentation for this package is contained within the `doc/` directory. The guide for installing, using, and developing the code is included within the `doc/sphinx/` directory and requires Python 3 as well as the Python packages `sphinx` and `sphinx_rtd_theme`. With these packages installed, the documentation can be built and opened locally in HTML format. Navigate to the `doc/sphinx/` directory and execute:
+The documentation for this package is contained within the `doc/` directory. The guide for installing, using, and developing the code is included within the `doc/sphinx/` directory and requires Python 3 as well as the Python packages `sphinx`, `sphinx_rtd_theme`, and `sphinx-prompt`. With these packages installed, the documentation can be built and opened locally in HTML format. Navigate to the `doc/sphinx/` directory and execute:
 
 ```
 make html
