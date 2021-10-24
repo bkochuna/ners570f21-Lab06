@@ -5,14 +5,14 @@
 
 ' ------------------------------- User Inputs ------------------------------- '
 card Matrix
-card MatrixDataType
-card MatrixType
+card Precision
+card MatrixOutputType
 
 ' ------------------------------- Input Check ------------------------------- '
 card check
 Matrix --> check
-MatrixDataType --> check
-MatrixType --> check
+Precision --> check
+MatrixOutputType --> check
 
 ' ------------------------------ Process Setup ------------------------------ '
 card processSetup
