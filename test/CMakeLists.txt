@@ -19,9 +19,11 @@ add_test(NAME testSparseMatrix_test
         )
 
 # Set additional pass/fail conditions for test, other than return code
-set_tests_properties(testSparseMatrix_test PROPERTIES
-    PASS_REGULAR_EXPRESSION "Called SparseMatrix Constructor"
-)
+#set_tests_properties(testSparseMatrix_test PROPERTIES
+#    PASS_REGULAR_EXPRESSION "Called SparseMatrix Constructor"
+#)
+# COMMENTING THESE OUT SINCE WE ARE NO LONGER PRINTING THESE IN THE CONSTRUCTOR
+# LEAVING IT AS AN EXAMPLE FOR HOW TO DO IT
 
 add_unit_test(test_example)
 add_unit_test(test_another_example)
