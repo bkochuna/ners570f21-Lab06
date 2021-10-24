@@ -1,8 +1,8 @@
 #ifndef _ELLPACK_
 #define _ELLPACK_
 
-#include <map>     //for using map (like a Python dictionary)
-#include <utility> //for using pair
+#include <map>
+#include <utility>
 
 #include "SparseMatrix.hpp"
 
@@ -26,10 +26,10 @@ class ELLPACK : public SparseMatrix
         ~ELLPACK();
 
         // Copy constructor
-        COO(const COO &other);
+        ELLPACK(const ELLPACK<fp_type> &other);
 
         // Assignment Operator
-        COO &operator=(const COO &other);
+        ELLPACK &operator=(const ELLPACK<fp_type> &other);
 
         /*
             Function : setCoefficients
@@ -51,7 +51,7 @@ class ELLPACK : public SparseMatrix
             x : array of length equal to the number of columns in the matrix to multiply
             b : array of length equal to the number of columns in the matrix that is the result of the multiplication
         */
-        const void matVec(const fp_type * const x,  fp_type * const b) const override;
+        void matVec(const fp_type * const x, fp_type * const b) const override;
 
         /*
             Function : getCOO
