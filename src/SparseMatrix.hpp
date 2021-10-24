@@ -1,7 +1,6 @@
 #ifndef _SPARSE_MATRIX_
 #define _SPARSE_MATRIX_
 
-#include <cstddef> //for size_t
 #include <map>     //for using map (like a Python dictionary)
 #include <utility> //for using pair
 
