@@ -34,6 +34,10 @@ In the abstract factory, a client initializes a sparse matrix object using the `
 This interface will call one of several concrete classes to generate a sparse matrix in the desired form.
 The interface provides the client link to a sparse matrix object that the client can use without direct interaction with many of the methods within the dependent classes.
 
+The COO implementation is in the ``coo.hpp`` file and the CRS is in ``crs.hpp`` file currently located in the ``src`` directory.
+.. TODO add in where the BCRS, ELLPACK, and JDS implementations are.
+They are basic functions written in C that create the sparse matrix formats.
+
 Builder Pattern
 ---------------
 
