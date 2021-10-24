@@ -1,0 +1,22 @@
+@startuml
+
+' ---------------------------------- Objects -------------------------------- '
+card SparseMatrixELLPACK
+
+card SparseMatrixJDS
+
+card SparseMatrixBCRS
+
+card SparseMatrixCOO
+
+card SparseMatrixCRS
+
+SparseMatrixELLPACK <--> SparseMatrixJDS
+
+SparseMatrixELLPACK <--> SparseMatrixBCRS
+
+SparseMatrixELLPACK <--> SparseMatrixCOO
+
+SparseMatrixELLPACK <--> SparseMatrixCRS
+
+@enduml
