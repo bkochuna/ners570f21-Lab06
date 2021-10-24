@@ -19,7 +19,7 @@ class CRS : public SparseMatrix<fp_type>
 
     public:
         //This is the constructor
-        CRS(const size_t nrows, const size_t ncols):SparseMatrix<fp_type>(nrows, ncols), vals(nullptr), ia(nullptr), ja(nullptr), nblk(0);
+        CRS(const size_t nrows, const size_t ncols):SparseMatrix<fp_type>(nrows, ncols), _vals(nullptr), _ia(nullptr), _ja(nullptr) {};
 
         //This is the destructor
         ~CRS();

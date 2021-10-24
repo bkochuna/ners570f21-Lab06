@@ -3,8 +3,10 @@ hello("${CMAKE_CURRENT_SOURCE_DIR}")
 set(${PROJECT_NAME}_SRCS
   SparseMatrix.cpp
   COO.cpp
+  CRS.cpp
   BCRS.cpp
   ELLPACK.cpp
+  JDS.cpp
 )
 
 set(${PROJECT_NAME}_LIBS

@@ -13,7 +13,7 @@ class JDS : public SparseMatrix<fp_type>
      //private:
 
     protected:
-       fp_type * _perm,;
+       fp_type * _perm;
        fp_type * _jdiag;
        fp_type * _col_ind;
        fp_type ** _jd_ptr;

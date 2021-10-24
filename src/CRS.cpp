@@ -10,7 +10,7 @@ CRS<fp_type>::~CRS(){
 }
 
 template <class fp_type>
-CRS<fp_type>::CRS(const CRS<fp_type> &other) : SparseMatrix<fp_type>{other._nrows, other._ncols) {
+CRS<fp_type>::CRS(const CRS<fp_type> &other) : SparseMatrix<fp_type>(other._nrows, other._ncols) {
 
 }
 
@@ -53,5 +53,8 @@ template <class fp_type>
 void CRS<fp_type>::getJDS(fp_type * const perm, fp_type * const jdiag, fp_type * const col_ind, fp_type ** const jd_ptr) const {
 
 }
+
+template class CRS<float>;
+template class CRS<double>;
 
 }
