@@ -21,5 +21,4 @@ add_test(NAME testSparseMatrix_test
 # Set additional pass/fail conditions for test, other than return code
 set_tests_properties(testSparseMatrix_test PROPERTIES
     PASS_REGULAR_EXPRESSION "Called SparseMatrix Constructor"
-    PASS_REGULAR_EXPRESSION "Called SparseMatrix Destructor"
 )
