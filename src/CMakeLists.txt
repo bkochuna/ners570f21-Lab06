@@ -6,6 +6,8 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 add_library(spmv
              SparseMatrix.cpp
              COO.cpp
+             CRS.cpp
              BCRS.cpp
              ELLPACK.cpp
+             JDS.cpp
            )
