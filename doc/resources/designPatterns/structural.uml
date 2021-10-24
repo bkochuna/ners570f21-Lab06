@@ -1,0 +1,37 @@
+@startuml
+
+' ------------------------ Structural Design Pattern ------------------------ '
+:userInputs:
+
+' ------------------------------- User Inputs ------------------------------- '
+card Matrix
+card MatrixDataType
+card MatrixType
+
+' ------------------------------- Input Check ------------------------------- '
+card check
+Matrix --> check
+MatrixDataType --> check
+MatrixType --> check
+
+' ------------------------------ Process Setup ------------------------------ '
+card processSetup
+check --> processSetup
+
+' ---------------------------- Change to ELLPACK ---------------------------- '
+card transformToELLPACK
+processSetup --> transformToELLPACK
+
+' ------------------------------- Solve Matrix ------------------------------ '
+card solve
+transformToELLPACK --> solve
+
+' ----------------------------- Change to Output ---------------------------- '
+card ELLPACKtoMatrixType
+solve --> ELLPACKtoMatrixType
+
+' ---------------------------------- Output --------------------------------- '
+card output
+ELLPACKtoMatrixType --> output
+
+@enduml

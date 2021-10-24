@@ -1,6 +1,6 @@
 @startuml
 
-' ---------------------------------- Objects -------------------------------- '
+' ------------------------ Behavioral Design Pattern ------------------------ '
 card SparseMatrixELLPACK
 
 card SparseMatrixJDS

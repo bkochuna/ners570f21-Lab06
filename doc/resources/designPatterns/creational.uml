@@ -1,0 +1,73 @@
+@startuml
+
+' ------------------------- Creational Design Pattern ----------------------- '
+
+' -------------------------- Abstract Sparse Matrix ------------------------- '
+abstract class SparseMatrix
+
+' Attributes
+SparseMatrix : ~ dataType: Boolean precision
+
+' Sub-classes
+SparseMatrix <-- SparseMatrixCOO
+SparseMatrix <-- SparseMatrixELLPACK
+SparseMatrix <-- SparseMatrixCRS
+SparseMatrix <-- SparseMatrixBCRS
+SparseMatrix <-- SparseMatrixJDS
+
+' -------------------------------- COO Format ------------------------------- '
+class SparseMatrixCOO
+
+' Methods
+SparseMatrixCOO : + create()
+SparseMatrixCOO : + set()
+SparseMatrixCOO : + get()
+SparseMatrixCOO : + transform()
+SparseMatrixCOO : + destroy()
+
+' -------------------------------- CRS Format ------------------------------- '
+class SparseMatrixCRS
+
+' Methods
+SparseMatrixCRS : + create()
+SparseMatrixCRS : + set()
+SparseMatrixCRS : + get()
+SparseMatrixCRS : + transform()
+SparseMatrixCRS : + destroy()
+
+' -------------------------------- BCRS Format ------------------------------- '
+class SparseMatrixBCRS
+
+' Methods
+SparseMatrixBCRS : + create()
+SparseMatrixBCRS : + set()
+SparseMatrixBCRS : + get()
+SparseMatrixBCRS : + transform()
+SparseMatrixBCRS : + destroy()
+
+' -------------------------------- JDS Format ------------------------------- '
+class SparseMatrixJDS
+
+' Methods
+SparseMatrixJDS : + create()
+SparseMatrixJDS : + set()
+SparseMatrixJDS : + get()
+SparseMatrixJDS : + transform()
+SparseMatrixJDS : + destroy()
+
+' -------------------------------- ELLPACK Format ------------------------------- '
+class SparseMatrixELLPACK
+
+' Methods
+SparseMatrixELLPACK : + create()
+SparseMatrixELLPACK : + set()
+SparseMatrixELLPACK : + get()
+SparseMatrixELLPACK : + transform()
+SparseMatrixELLPACK : + destroy()
+SparseMatrixELLPACK : + solve()
+
+
+
+
+
+@enduml
