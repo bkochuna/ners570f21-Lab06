@@ -1,5 +1,5 @@
-#ifndef _BCRS_
-#define _BCRS_
+#ifndef _BCRS_MATRIX_
+#define _BCRS_MATRIX_
 
 #include <map>     //for using map (like a Python dictionary)
 #include <utility> //for using pair
@@ -8,20 +8,20 @@
 namespace spmv
 {
 template <class fp_type>
-class BCRS : public SparseMatrix
+class BCRS : public SparseMatrix<fp_type>
 {
      //private:
 
     protected:
-       fp_type *** vals;
-       size_t * ia;
-       fp_type * ja;
-       size_t nblk;
+       fp_type *** _vals;
+       size_t * _ia;
+       fp_type * _ja;
+       size_t _nblk;
 
        
     public:
         //This is the constructor
-        BCRS(const size_t nrows, const size_t ncols):SparseMatrix(rnows, ncols), vals(null_ptr), ia(null_ptr), ja(null_ptr), nblk(0);
+        BCRS(const size_t nrows, const size_t ncols):SparseMatrix<fp_type>(nrows, ncols), _vals(nullptr), _ia(nullptr), _ja(nullptr), _nblk(0) {};
 
         //This is the destructor
         ~BCRS();

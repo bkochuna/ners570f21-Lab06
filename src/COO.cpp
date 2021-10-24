@@ -11,13 +11,14 @@ COO<fp_type>::~COO(){
 }
 
 template <class fp_type>
-COO::COO(const COO<fp_type> &other){
+COO<fp_type>::COO(const COO<fp_type> &other) : SparseMatrix<fp_type>(other._nrows, other._ncols){
 
 }
 
 template <class fp_type>
 COO<fp_type> &COO<fp_type>::operator=(const COO<fp_type> &other){
 
+  return *this;
 }
 
 template <class fp_type>
@@ -54,5 +55,8 @@ template <class fp_type>
 void COO<fp_type>::getJDS(fp_type * const perm, fp_type * const jdiag, fp_type * const col_ind, fp_type ** const jd_ptr) const{
 
 }
+
+template class COO<float>;
+template class COO<double>;
 
 }
