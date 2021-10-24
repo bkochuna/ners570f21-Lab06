@@ -32,7 +32,7 @@ class SparseMatrix
             a binary tree containing the [i, j] coordinates of non zero entries in the key and values in the values.
 
         */
-        virtual void setCoefficients(const std::map< std::pair<size_t,size_t> , fp_type > buildCoeff);
+        virtual void setCoefficients(const std::map< std::pair<size_t,size_t> , fp_type > buildCoeff) = 0;
 
         /* 
           Function : matVec
@@ -44,7 +44,7 @@ class SparseMatrix
           b : array of length equal to the number of columns in the matrix that is the result of the multiplication
 
         */
-        virtual void matVec(const fp_type * const x,  fp_type * const b) const;
+        virtual void matVec(const fp_type * const x,  fp_type * const b) const = 0;
 
       /*
         Function : getCOO
@@ -56,7 +56,7 @@ class SparseMatrix
         idx_col : column indices for the values, size nnz
         idx_row : row indices for the values, size nnz
         */
-        virtual void getCOO(fp_type * const vals, size_t * const idx_col, size_t * const idx_row) const;
+        virtual void getCOO(fp_type * const vals, size_t * const idx_col, size_t * const idx_row) const = 0;
 
         /*
           Function : getELLPACK
@@ -68,7 +68,7 @@ class SparseMatrix
           ja        : a 2d array of size _nrows by maxnz_row that contains column indices
           maxnz_row : size of second dimension for ja
         */
-        virtual void getELLPACK(fp_type * const vals, size_t ** const ja, size_t &maxnz_row) const;
+        virtual void getELLPACK(fp_type * const vals, size_t ** const ja, size_t &maxnz_row) const = 0;
 
         /*
           Function : getCRS
@@ -80,7 +80,7 @@ class SparseMatrix
           ja   : column indices, size _nnz
           ia   : row indices, size _nrows + 1
         */
-        virtual void getCRS(fp_type * const vals, size_t * const ia, size_t *const ja) const;
+        virtual void getCRS(fp_type * const vals, size_t * const ia, size_t *const ja) const = 0;
 
         /*
           Function : getBCRS
@@ -93,7 +93,7 @@ class SparseMatrix
           ja   : column indices, size _nnz
           nblk : number of non-zero blocks
         */
-        virtual void getBCRS(fp_type *** const vals, size_t * const ia, fp_type * const ja, size_t &nblk) const;
+        virtual void getBCRS(fp_type *** const vals, size_t * const ia, fp_type * const ja, size_t &nblk) const = 0;
 
         /*
           Function : getJDS
@@ -106,7 +106,7 @@ class SparseMatrix
           col_ind : array containing coresponding column indices, size non_zero in first row
           jd_ptr  : pointer array pointing to the beginning of each jagged diagonal, size nn_zero in first row
         */
-        virtual void getJDS(fp_type * const perm, fp_type * const jdiag, fp_type * const col_ind, fp_type ** const jd_ptr) const;
+        virtual void getJDS(fp_type * const perm, fp_type * const jdiag, fp_type * const col_ind, fp_type ** const jd_ptr) const = 0;
 
 };
    
