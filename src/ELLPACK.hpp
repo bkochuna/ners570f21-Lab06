@@ -9,18 +9,18 @@
 namespace spmv
 {
 template <class fp_type>
-class ELLPACK : public SparseMatrix
+class ELLPACK : public SparseMatrix<fp_type>
 {
     //private:
 
     protected:
-        fp_type * vals;
-        size_t ** ja;
-        size_t maxnz_row;
+        fp_type * _vals;
+        size_t ** _ja;
+        size_t _maxnz_row;
 
     public:
         //This is the constructor
-        ELLPACK(const size_t nrows, const size_t ncols):SparseMatrix(nrows, ncols), vals(nullptr), ja(nullptr), maxnz_row(0) {};
+        ELLPACK(const size_t nrows, const size_t ncols):SparseMatrix<fp_type>(nrows, ncols), _vals(nullptr), _ja(nullptr), _maxnz_row(0) {};
 
         // Destructor
         ~ELLPACK();
@@ -40,7 +40,7 @@ class ELLPACK : public SparseMatrix
             buildCoefficient
                 a binary tree containing the [i, j] coordinates of non zero entries in the key and values in the values.
         */
-        void setCoefficients(const std::map< std::pair<size_t,size_t> , fp_type > buildCoeff) override;
+        void setCoefficients(const std::map< std::pair<size_t,size_t> , fp_type > &buildCoeff) override;
 
         /*
             Function : matVec

@@ -1,4 +1,4 @@
-#ifndef _COO_MATRIX
+#ifndef _COO_MATRIX_
 #define _COO_MATRIX_
 
 #include <map>     //for using map (like a Python dictionary)
@@ -8,26 +8,26 @@
 namespace spmv
 {
 template <class fp_type>
-class COO : public SparseMatrix
+class COO : public SparseMatrix<fp_type>
 {
      //private:
 
      protected:
-       fp_type * vals;
-       size_t * idx_col, idx_row; 
+       fp_type *_vals;
+       size_t *_idx_col, *_idx_row; 
        
      public:
         //This is the constructor
-        COO(const size_t nrows, const size_t ncols):SparseMatrix(nrows, ncols), vals(nullptr), idx_col(nullptr), idx_row(nullptr) {};
+        COO(const size_t nrows, const size_t ncols):SparseMatrix<fp_type>(nrows, ncols), _vals(nullptr), _idx_col(nullptr), _idx_row(nullptr) {};
 
         // Destructor
         ~COO();
 
         // Copy constructor
-        COO(const COO &other);
+        COO(const COO<fp_type> &other);
 
         // Assignment operator
-        COO &operator=(const COO &other);
+        COO &operator=(const COO<fp_type> &other);
 
        /*
           Function : setCoefficients

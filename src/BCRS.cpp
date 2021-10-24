@@ -10,13 +10,14 @@ BCRS<fp_type>::~BCRS(){
 }
 
 template <class fp_type>
-BCRS<fp_type>::BCRS(const BCRS<fp_type> &other) {
+BCRS<fp_type>::BCRS(const BCRS<fp_type> &other) : SparseMatrix<fp_type>(other._nrows, other._ncols) {
 
 }
 
 template <class fp_type>
 BCRS<fp_type> &BCRS<fp_type>::operator=(const BCRS<fp_type> &other) {
 
+    return *this;
 }
 
 template <class fp_type>
@@ -53,5 +54,8 @@ template <class fp_type>
 void BCRS<fp_type>::getJDS(fp_type * const perm, fp_type * const jdiag, fp_type * const col_ind, fp_type ** const jd_ptr) const {
 
 }
+
+template class BCRS<float>;
+template class BCRS<double>;
 
 }
