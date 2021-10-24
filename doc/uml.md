@@ -4,7 +4,13 @@ The abstract factory for our Sparse Matrix is the following
 ![](images/factory.png) 
 ## COO Matrix format
 
+The coordinate matrix format is fairly intuitive as it has 3 arrays: 1 float array of nonzero matrix values, and 2 integer arrays for the row and column indices
 
+The implementation of the abstract factory code is 
+```
+TODO
+```
+To use it, 
 TODO insert documentation
 
 ## CRS Matrix format
@@ -15,6 +21,6 @@ The 2 integer arrays are the column indices of the nonzeros and the indices of t
 
 The implementation of the abstract factory code is 
 ```
-TODO insert some code from 
+TODO insert some code from Chris
 ```
 TODO insert documentation
