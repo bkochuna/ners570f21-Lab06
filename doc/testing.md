@@ -6,6 +6,10 @@ Tests for these will include
 * matrix of zeros and make sure returned vector is zero
 * tridiagonal banded matrix
 * a random matrix and random vector checked against a simple dense matrix vector multiplication (setting the random seed at the beginning of the test to ensure reproducibility)
+* Each test is run for each matrix type
+* Matrices will be created for each test using SparseMatrix Factory
+* Entries are set by building a map and using the setCoefficients method
+* All Tests are templated to allow for single/double precision
 
 ## Single/double precision
 * Define a testing class that is templated to define whether or not to use single or double precision data types
