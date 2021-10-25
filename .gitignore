@@ -1,0 +1,7 @@
+# Documentation Files
+*doc/doxygen/html/
+*doc/doxygen/latex/
+
+
+# Other
+**.vscode/
