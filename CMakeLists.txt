@@ -45,8 +45,8 @@ set(CPACK_SOURCE_IGNORE_FILES
 
 # Set different names for the debug executables
 set(CMAKE_DEBUG_POSTFIX d)
-add_executable(SpMV hello.cpp)
-set_target_properties(SpMV PROPERTISE DEBUG_POSTFIX ${CMAKE_DEBUG_POSTFIX})
+add_executable(SpMV src/hello.cpp)
+set_target_properties(SpMV PROPERTIES DEBUG_POSTFIX ${CMAKE_DEBUG_POSTFIX})
 
 
 
