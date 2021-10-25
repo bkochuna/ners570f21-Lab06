@@ -39,6 +39,17 @@ cmake -DCMAKE_BUILD_TYPE=Release ..
 cmake --build .
 ```
 
+### Compiler flags
+The setting of compiler flags for each configurations can be specificed as follow:
+
+```console
+set(CMAKE_CXX_FLAGS_DEBUG "-O0")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+```
+
+For the debug build, the optimization is disabled. For the release build, the higher level of optimization is used.
+
+
 ### Building specific targets
 The configure step generates various targets that you can build with make. You can see a list of the targests with
 
