@@ -42,3 +42,13 @@ set(CPACK_SOURCE_IGNORE_FILES
     /.git 
     /\\\\.DS_Store
 )
+
+# Set different names for the debug executables
+set(CMAKE_DEBUG_POSTFIX d)
+add_executable(SpMV hello.cpp)
+set_target_properties(SpMV PROPERTISE DEBUG_POSTFIX ${CMAKE_DEBUG_POSTFIX})
+
+
+
+
+
