@@ -53,6 +53,36 @@ public:
   virtual void matVec(const fp_type *const x, fp_type *const b) const;
 
   /*
+          Function : getnRows
+            Returns the number of rows in the matrix
+
+          Returns
+          ----------
+            _nrows
+        */
+  size_t getnRows();
+
+  /*
+          Function : getnCols
+            Returns the number of cols in the matrix
+
+          Returns
+          ----------
+            _ncols
+        */
+  size_t getnCols();
+
+  /*
+          Function : getnNZ
+            Returns the number of non-zeros in the matrix
+
+          Returns
+          ----------
+            _nz
+        */
+  size_t getnNZ();
+
+  /*
         Function : getCOO
           Gets the Sparse matrix in COO format
 
@@ -113,8 +143,6 @@ public:
           jd_ptr  : pointer array pointing to the beginning of each jagged diagonal, size nn_zero in first row
         */
   virtual void getJDS(fp_type *const perm, fp_type *const jdiag, fp_type *const col_ind, fp_type **const jd_ptr) const;
-
 };
-}
 
 #endif
