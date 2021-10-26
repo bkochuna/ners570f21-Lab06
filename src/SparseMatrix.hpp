@@ -3,6 +3,7 @@
 
 #include <map>     //for using map (like a Python dictionary)
 #include <utility> //for using pair
+#include <vector>
 
 namespace spmv
 {
@@ -37,11 +38,11 @@ class SparseMatrix
 
           Parameters
           ----------
-          x : array of length equal to the number of columns in the matrix to multiply
-          b : array of length equal to the number of columns in the matrix that is the result of the multiplication
+          x : vector of length equal to the number of columns in the matrix to multiply
+          b : vector of length equal to the number of columns in the matrix that is the result of the multiplication
 
         */
-        virtual void matVec(const fp_type * const x,  fp_type * const b) const = 0;
+        virtual void matVec(const std::vector<fp_type> &x,  std::vector<fp_type> &b) const;
 
         /*
           Function : getnRows
@@ -83,7 +84,7 @@ class SparseMatrix
         idx_col : column indices for the values, size nnz
         idx_row : row indices for the values, size nnz
         */
-        virtual void getCOO(fp_type * const vals, size_t * const idx_col, size_t * const idx_row) const = 0;
+        virtual void getCOO(std::vector<fp_type> &vals, std::vector<size_t> &idx_col, std::vector<size_t> &idx_row) const;
 
         /*
           Function : getELLPACK
@@ -92,10 +93,9 @@ class SparseMatrix
           Parameters
           ----------
           vals      : the values in the matrix, size nnz
-          ja        : a 2d array of size _nrows by maxnz_row that contains column indices
-          maxnz_row : size of second dimension for ja
+          ja        : a 2d vector of size _nrows by maxnz_row that contains column indices
         */
-        virtual void getELLPACK(fp_type * const vals, size_t ** const ja, size_t &maxnz_row) const = 0;
+        virtual void getELLPACK(std::vector<fp_type> &vals, std::vector<std::vector<size_t> > &ja, size_t &maxnz_row) const;
 
         /*
           Function : getCRS
@@ -107,7 +107,7 @@ class SparseMatrix
           ja   : column indices, size _nnz
           ia   : row indices, size _nrows + 1
         */
-        virtual void getCRS(fp_type * const vals, size_t * const ia, size_t *const ja) const = 0;
+        virtual void getCRS(std::vector<fp_type> &vals, std::vector<size_t> &ia, std::vector<size_t> &ja) const;
 
         /*
           Function : getBCRS
@@ -116,24 +116,24 @@ class SparseMatrix
           Parameters
           ----------
           vals : non-zero blocks in (block) row-wise fashion, size nblk by block size by block size
-          ia   : pointer array that points to the beginning of each block row in val and ja, size _nrows + 1
+          ia   : pointer vector that points to the beginning of each block row in val and ja, size _nrows + 1
           ja   : column indices, size _nnz
           nblk : number of non-zero blocks
         */
-        virtual void getBCRS(fp_type *** const vals, size_t * const ia, fp_type * const ja, size_t &nblk) const = 0;
+        virtual void getBCRS(std::vector<std::vector<std::vector<fp_type> > > &vals, std::vector<size_t> &ia, std::vector<size_t> &ja, size_t &nBlks) const;
 
         /*
           Function : getJDS
-            Gets sparse matrix in BCRS format
+            Gets sparse matrix in JDS format
 
             Parameters
             ----------
-          perm    : permutation array that reorders the rows, size _nrows
-          jdiag   : array containing jagged diagonals in succession, size non_zero in first row
-          col_ind : array containing coresponding column indices, size non_zero in first row
-          jd_ptr  : pointer array pointing to the beginning of each jagged diagonal, size nn_zero in first row
+          perm    : permutation vector that reorders the rows, size _nrows
+          jdiag   : vector containing jagged diagonals in succession, size non_zero in first row
+          col_ind : vector containing coresponding column indices, size non_zero in first row
+          jd_ptr  : pointer vector indexing to the beginning of each jagged diagonal, size nn_zero in first row
         */
-        virtual void getJDS(fp_type * const perm, fp_type * const jdiag, fp_type * const col_ind, fp_type ** const jd_ptr) const = 0;
+        virtual void getJDS(std::vector<size_t> &perm, std::vector<fp_type> &jdiag, std::vector<size_t> &col_ind, std::vector<size_t> &jd_ptr) const;
 
 };
    
