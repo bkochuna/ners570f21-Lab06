@@ -9,8 +9,6 @@ namespace spmv
 template <class fp_type>
 class SparseMatrix
 {
-     //private:
-
      protected:
        size_t _nrows;
        size_t _ncols;
@@ -45,7 +43,37 @@ class SparseMatrix
         */
         virtual void matVec(const fp_type * const x,  fp_type * const b) const = 0;
 
-      /*
+        /*
+          Function : getnRows
+            Returns the number of rows in the matrix
+
+          Returns
+          ----------
+            _nrows
+        */
+        size_t getnRows();
+
+        /*
+          Function : getnCols
+            Returns the number of cols in the matrix
+
+          Returns
+          ----------
+            _ncols
+        */
+        size_t getnCols();
+
+        /*
+          Function : getnNZ
+            Returns the number of non-zeros in the matrix
+
+          Returns
+          ----------
+            _nz
+        */
+        size_t getnNZ();
+
+        /*
         Function : getCOO
           Gets the Sparse matrix in COO format
 
