@@ -11,9 +11,7 @@ namespace spmv
 template <class fp_type>
 class ELLPACK : public SparseMatrix<fp_type>
 {
-    //private:
-
-    protected:
+    private:
         fp_type * _vals;
         size_t ** _ja;
         size_t _maxnz_row;

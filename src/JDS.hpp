@@ -10,9 +10,7 @@ namespace spmv
 template <class fp_type>
 class JDS : public SparseMatrix<fp_type>
 {
-     //private:
-
-    protected:
+    priavte:
        fp_type * _perm;
        fp_type * _jdiag;
        fp_type * _col_ind;
