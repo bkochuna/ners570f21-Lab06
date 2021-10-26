@@ -10,9 +10,8 @@ namespace spmv
 template <class fp_type>
 class BCRS : public SparseMatrix<fp_type>
 {
-     //private:
 
-    protected:
+    private:
        fp_type *** _vals;
        size_t * _ia;
        fp_type * _ja;

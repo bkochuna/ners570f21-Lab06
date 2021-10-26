@@ -10,9 +10,7 @@ namespace spmv
 template <class fp_type>
 class COO : public SparseMatrix<fp_type>
 {
-     //private:
-
-     protected:
+     private:
        fp_type *_vals;
        size_t *_idx_col, *_idx_row; 
        
