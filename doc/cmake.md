@@ -71,5 +71,15 @@ make test     # Runs test
 make clean    # Cleans directory of build files
 ```
 
+### Linking to SpMV library
+Linking cpp code to the SpMV library is accomplished with
+
+```console
+g++ -L. -I /path/to/src/dir filename.cpp -lSpMV
+```
+
+where filename.cpp is the file you are trying to link to.
+
+
 ### Installer packages
 Self extracting installer packages are located in the /cmake/ directory. Be sure to select the correct one based on the operating system and system architecture.
