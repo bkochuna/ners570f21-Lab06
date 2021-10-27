@@ -26,7 +26,34 @@ make -j N
 This compiles the entire SpMV library and tests. 
 
 ### Configure options
-Shuai is still working on this
+
+Debug/release options are included in the Cmake by default. But to distinguish the executables for different options, a postfix "d" will be added to the executable if the debug option is selected. To setup the debug build, please use the following command:
+
+```console
+mdkir /path/to/build/debug
+cd /path/to/build/debug
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+cmake --build .
+```
+
+Similarly, to setup release build, please specify as follow:
+
+```console
+mdkir /path/to/build/release
+cd /path/to/build/release
+cmake -DCMAKE_BUILD_TYPE=Release ..
+cmake --build .
+```
+
+### Compiler flags
+The setting of compiler flags for each configurations can be specificed as follow:
+
+```console
+set(CMAKE_CXX_FLAGS_DEBUG "-O0")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+```
+
+For the debug build, the optimization is disabled. For the release build, the higher level of optimization is used.
 
 
 ### Building specific targets
