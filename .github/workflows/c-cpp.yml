@@ -1,0 +1,27 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ cmake ]
+  pull_request:
+    branches: [ cmake ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: build
+      run: mkdir build
+    - name: cd 
+      run: cd build
+    - name: configure
+      run: cmake ..
+    - name: make
+      run: make
+    - name: make check
+      run: make check
+    - name: make SpMV
+      run: make SpMV
