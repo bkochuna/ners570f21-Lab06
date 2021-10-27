@@ -17,6 +17,12 @@ cmake /path/to/source/dir
 make
 ```
 
+The final command can also be run in parallel
+
+```console
+make -j N
+```
+
 This compiles the entire SpMV library and tests. 
 
 ### Configure options
