@@ -14,17 +14,17 @@ template <class fp_type>
 void CRS<fp_type>::getCRS(std::vector<fp_type> &vals, std::vector<size_t> &ia, std::vector<size_t> &ja)  const {
    
     int nnz, i, j;
-    &ncols = sizeof(&ia) - 1;
-    &nrows = sizeof(&ia) - 1;
-    fp_type ** A = new fp_type*[&ncols]
+    ncols = sizeof(&ia) - 1;
+    nrows = sizeof(&ia) - 1;
+    fp_type ** A = new fp_type*[ncols]
     for (int i = 0; i < M; i++) {
-        A[i] = new fp_type[&nrows];
+        A[i] = new fp_type[nrows];
     }   
 
-    for (i = 1; i<=&ncols; i=i+1) {//row
-        for (j = 1; j<=&ncols; j=j+1) { // coloumn
-            if ((&ja[nnz] == j) && (nnz <= &ia[i])) {
-                A[i][j] = &vals[nnz];
+    for (i = 1; i<=ncols; i=i+1) {//row
+        for (j = 1; j<=ncols; j=j+1) { // coloumn
+            if ((ja[nnz] == j) && (nnz <= ia[i])) {
+                A[i][j] = vals[nnz];
                 nnz = nnz+1;
             }
             else {
@@ -32,7 +32,7 @@ void CRS<fp_type>::getCRS(std::vector<fp_type> &vals, std::vector<size_t> &ia, s
             }
         }
     }
-    &nz = nnz
+    nz = nnz
 
 }
 
