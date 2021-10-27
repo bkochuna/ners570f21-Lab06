@@ -13,10 +13,10 @@ void CRS<fp_type>::setCoefficients(const std::map< std::pair<size_t,size_t> , fp
 template <class fp_type>
 void CRS<fp_type>::getCRS(std::vector<fp_type> &vals, std::vector<size_t> &ia, std::vector<size_t> &ja)  const {
    
-    int nnz, i, j;
+    int nnz, i, j, nz, ncols, nrows;
     ncols = sizeof(ia) - 1;
     nrows = sizeof(ia) - 1;
-    fp_type ** A = new fp_type*[ncols]
+    fp_type ** A = new fp_type*[ncols];
     for (int i = 0; i < ncols; i++) {
         A[i] = new fp_type[nrows];
     }   
