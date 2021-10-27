@@ -43,6 +43,10 @@ set(CPACK_SOURCE_IGNORE_FILES
     /\\\\.DS_Store
 )
 
+set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -DDEBUG")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG")
+
+
 # Set different names for the debug executables
 set(CMAKE_DEBUG_POSTFIX d)
 add_executable(SpMV src/hello.cpp)
