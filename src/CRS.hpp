@@ -15,10 +15,15 @@ class CRS : public SparseMatrix<fp_type>
         std::vector<std::vector<fp_type> > _vals;
         std::vector<size_t> _ia;
         std::vector<size_t> _ja;
+        int nrows;
+        int ncols;
 
     public:
         //This is the constructor
-        CRS(const size_t nrows, const size_t ncols):SparseMatrix<fp_type>(nrows, ncols){};
+        CRS(const size_t nrows, const size_t ncols):SparseMatrix<fp_type>(nrows, ncols){
+            nrows = nrows;
+            ncols = ncols;
+        };
 
         /*
             Function : setCoefficients
@@ -73,6 +78,9 @@ class CRS : public SparseMatrix<fp_type>
             None
         */
         std::vector<fp_type> getColsIndices();
+
+        int getNRows();
+        int getNCols();
 
 };
 }

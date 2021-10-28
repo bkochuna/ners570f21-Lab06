@@ -51,16 +51,43 @@ std::vector<fp_type> CRS<fp_type>::getColsIndices() {
     return this->_ja;
 }
 
+template <class fp_type>
+int CRS<fp_type>::getNRows() {
+    return this->nrows;
+}
+
+template <class fp_type>
+int CRS<fp_type>::getNCols() {
+    return this->ncols;
+}
+
+
 template class CRS<float>;
 template class CRS<double>;
 
 
 template <class fp_type>
-std::vector<fp_type> vecMult(CRS<fp_type> &mat, std::vector<fp_type> &vec) {
+std::vector<fp_type> vecMult(CRS<fp_type> &mat, std::vector<fp_type> &vector) {
     std::vector<fp_type> ia = mat.getRowsIndices();
     std::vector<fp_type> ja = mat.getColsIndices();
     std::vector<fp_type> vals = mat.getValues();
 
+    std::vector<fp_type> result;
+    int ncols = mat.getNCols();
+    int nrows = mat.getNRows();
+    int i,j,N;
+    N = nrows;
+    for (k = 0; k < N; k = k + 1)
+       result[i] = 0;
+
+	for (i = 0; i < N; i = i + 1)
+	 {  
+		for (k = ia[i]; k < ia[i+1]; k = k + 1)
+      	{  
+        	result[i] = result[i] + vals[k]*vector[ja[k]];
+      }  
+    }
+	return result; 
 }
 
 }
