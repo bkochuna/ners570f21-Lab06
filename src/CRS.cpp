@@ -42,12 +42,12 @@ std::vector<fp_type> CRS<fp_type>::getValues() {
 }
 
 template <class fp_type>
-std::vector<fp_type> CRS<fp_type>::getRowsIndices() {
+std::vector<size_t> CRS<fp_type>::getRowsIndices() {
     return _ia;
 }
 
 template <class fp_type>
-std::vector<fp_type> CRS<fp_type>::getColsIndices() {
+std::vector<size_t> CRS<fp_type>::getColsIndices() {
     return _ja;
 }
 

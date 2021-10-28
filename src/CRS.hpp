@@ -12,7 +12,7 @@ template <class fp_type>
 class CRS : public SparseMatrix<fp_type>
 {
     private:
-        std::vector<std::vector<fp_type> > _vals;
+        std::vector<fp_type> _vals;
         std::vector<size_t> _ia;
         std::vector<size_t> _ja;
         int nrows;
@@ -67,7 +67,7 @@ class CRS : public SparseMatrix<fp_type>
             ----------
             None
         */
-        std::vector<fp_type> getRowsIndices();
+        std::vector<size_t> getRowsIndices();
 
         /*
             Function : getColsIndices
@@ -77,7 +77,7 @@ class CRS : public SparseMatrix<fp_type>
             ----------
             None
         */
-        std::vector<fp_type> getColsIndices();
+        std::vector<size_t> getColsIndices();
 
         int getNRows();
         int getNCols();
