@@ -39,4 +39,10 @@ void CRS<fp_type>::getCRS(std::vector<fp_type> &vals, std::vector<size_t> &ia, s
 template class CRS<float>;
 template class CRS<double>;
 
+
+template <class fp_type>
+std::vector<fp_type> vecMult(CRS<fp_type> &mat, std::vector<fp_type> &vec) {
+    
+}
+
 }
