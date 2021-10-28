@@ -38,27 +38,27 @@ void CRS<fp_type>::getCRS(std::vector<fp_type> &vals, std::vector<size_t> &ia, s
 
 template <class fp_type>
 std::vector<fp_type> CRS<fp_type>::getValues() {
-    return this->_vals;
+    return _vals;
 }
 
 template <class fp_type>
 std::vector<fp_type> CRS<fp_type>::getRowsIndices() {
-    return this->_ia;
+    return _ia;
 }
 
 template <class fp_type>
 std::vector<fp_type> CRS<fp_type>::getColsIndices() {
-    return this->_ja;
+    return _ja;
 }
 
 template <class fp_type>
 int CRS<fp_type>::getNRows() {
-    return this->nrows;
+    return nrows;
 }
 
 template <class fp_type>
 int CRS<fp_type>::getNCols() {
-    return this->ncols;
+    return ncols;
 }
 
 
