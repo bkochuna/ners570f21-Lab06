@@ -138,5 +138,6 @@ namespace spmv
         */
     virtual void getJDS(std::vector<size_t> &perm, std::vector<fp_type> &jdiag, std::vector<size_t> &col_ind, std::vector<size_t> &jd_ptr) const;
   };
+}
 
 #endif
