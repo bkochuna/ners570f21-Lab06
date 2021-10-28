@@ -9,7 +9,7 @@ add_executable(testSparseMatrix
               )
 
 #Specify link options for executable (what directories and where)
-target_link_libraries(testSparseMatrix spmv)
+target_link_libraries(testSparseMatrix ${PROJECT_NAME})
 target_link_directories(testSparseMatrix PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/../src)
 
 # Declare test and have it run test executable

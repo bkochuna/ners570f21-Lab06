@@ -13,3 +13,7 @@ cmake -DCODE_COVERAGE=ON -DCMAKE_BUILD_TYPE=Debug ..
 cmake --build . --config Debug -- -j $(nproc)
 # Test
 ctest -j $(nproc) --output-on-failure
+
+lcov --directory . --capture --output-file coverage.info
+lcov --remove coverage.info -o coverage.info '*/usr/*' '*/test/*' "${HOME}"'/.cache/*'
+lcov --list coverage.info # debug info
