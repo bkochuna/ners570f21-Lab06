@@ -7,20 +7,23 @@
 
 namespace spmv
 {
-template <class fp_type>
-class SparseMatrix
-{
-     protected:
-       size_t _nrows;
-       size_t _ncols;
-       size_t _nz    = 0;
+  template <class fp_type>
+  class SparseMatrix
+  {
+    //private:
 
-       std::map< std::pair<size_t,size_t> , fp_type > _buildCoeff;        
-     public:
-        //This is the constructor
-        SparseMatrix(const size_t nrows, const size_t ncols):_nrows(nrows), _ncols(ncols), _nz(0) {};
+  protected:
+    size_t _nrows = 0;
+    size_t _ncols = 0;
+    size_t _nz = 0;
 
-       /*
+    std::map<std::pair<size_t, size_t>, fp_type> _buildCoeff;
+
+  public:
+    //This is the constructor
+    SparseMatrix(const size_t nrows, const size_t ncols) : _nrows(nrows), _ncols(ncols), _nz(0){};
+
+    /*
           Function : setCoefficients
             Builds a sparse matrix 
 
@@ -30,9 +33,9 @@ class SparseMatrix
             a binary tree containing the [i, j] coordinates of non zero entries in the key and values in the values.
 
         */
-        virtual void setCoefficients(const std::map< std::pair<size_t,size_t> , fp_type > &buildCoeff) = 0;
+    virtual void setCoefficients(const std::map<std::pair<size_t, size_t>, fp_type> &buildCoeff) = 0;
 
-        /* 
+    /* 
           Function : matVec
             Preforms matrix vector multiplication
 
@@ -42,9 +45,9 @@ class SparseMatrix
           b : vector of length equal to the number of columns in the matrix that is the result of the multiplication
 
         */
-        virtual void matVec(const std::vector<fp_type> &x,  std::vector<fp_type> &b) const;
+    virtual void matVec(const std::vector<fp_type> &x, std::vector<fp_type> &b) const;
 
-        /*
+    /*
           Function : getnRows
             Returns the number of rows in the matrix
 
@@ -52,9 +55,9 @@ class SparseMatrix
           ----------
             _nrows
         */
-        size_t getnRows();
+    size_t getnRows();
 
-        /*
+    /*
           Function : getnCols
             Returns the number of cols in the matrix
 
@@ -62,9 +65,9 @@ class SparseMatrix
           ----------
             _ncols
         */
-        size_t getnCols();
+    size_t getnCols();
 
-        /*
+    /*
           Function : getnNZ
             Returns the number of non-zeros in the matrix
 
@@ -72,9 +75,9 @@ class SparseMatrix
           ----------
             _nz
         */
-        size_t getnNZ();
+    size_t getnNZ();
 
-        /*
+    /*
         Function : getCOO
           Gets the Sparse matrix in COO format
 
@@ -84,9 +87,9 @@ class SparseMatrix
         idx_col : column indices for the values, size nnz
         idx_row : row indices for the values, size nnz
         */
-        virtual void getCOO(std::vector<fp_type> &vals, std::vector<size_t> &idx_col, std::vector<size_t> &idx_row) const;
+    virtual void getCOO(std::vector<fp_type> &vals, std::vector<size_t> &idx_col, std::vector<size_t> &idx_row) const;
 
-        /*
+    /*
           Function : getELLPACK
             Gets the sparse matrix in ELLPACK format
           
@@ -95,9 +98,9 @@ class SparseMatrix
           vals      : the values in the matrix, size nnz
           ja        : a 2d vector of size _nrows by maxnz_row that contains column indices
         */
-        virtual void getELLPACK(std::vector<fp_type> &vals, std::vector<std::vector<size_t> > &ja, size_t &maxnz_row) const;
+    virtual void getELLPACK(std::vector<fp_type> &vals, std::vector<std::vector<size_t> > &ja, size_t &maxnz_row) const;
 
-        /*
+    /*
           Function : getCRS
             Gets sparse matrix in CRS format
           
@@ -107,9 +110,9 @@ class SparseMatrix
           ja   : column indices, size _nnz
           ia   : row indices, size _nrows + 1
         */
-        virtual void getCRS(std::vector<fp_type> &vals, std::vector<size_t> &ia, std::vector<size_t> &ja) const;
+    virtual void getCRS(std::vector<fp_type> &vals, std::vector<size_t> &ia, std::vector<size_t> &ja) const;
 
-        /*
+    /*
           Function : getBCRS
             Gets sparse matrix in BCRS format
           
@@ -120,9 +123,9 @@ class SparseMatrix
           ja   : column indices, size _nnz
           nblk : number of non-zero blocks
         */
-        virtual void getBCRS(std::vector<std::vector<std::vector<fp_type> > > &vals, std::vector<size_t> &ia, std::vector<size_t> &ja, size_t &nBlks) const;
+    virtual void getBCRS(std::vector<std::vector<std::vector<fp_type> > > &vals, std::vector<size_t> &ia, std::vector<size_t> &ja, size_t &nBlks) const;
 
-        /*
+    /*
           Function : getJDS
             Gets sparse matrix in JDS format
 
@@ -133,10 +136,8 @@ class SparseMatrix
           col_ind : vector containing coresponding column indices, size non_zero in first row
           jd_ptr  : pointer vector indexing to the beginning of each jagged diagonal, size nn_zero in first row
         */
-        virtual void getJDS(std::vector<size_t> &perm, std::vector<fp_type> &jdiag, std::vector<size_t> &col_ind, std::vector<size_t> &jd_ptr) const;
-
-};
-   
+    virtual void getJDS(std::vector<size_t> &perm, std::vector<fp_type> &jdiag, std::vector<size_t> &col_ind, std::vector<size_t> &jd_ptr) const;
+  };
 }
 
 #endif

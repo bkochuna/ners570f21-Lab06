@@ -1,13 +1,24 @@
 hello("${CMAKE_CURRENT_SOURCE_DIR}")
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+set(${PROJECT_NAME}_SRCS
+  SparseMatrix.cpp
+  COO.cpp
+  CRS.cpp
+  BCRS.cpp
+  ELLPACK.cpp
+  JDS.cpp
+)
 
-# Declare a target library and associated sources
-add_library(spmv
-             SparseMatrix.cpp
-             COO.cpp
-             CRS.cpp
-             BCRS.cpp
-             ELLPACK.cpp
-             JDS.cpp
-           )
+set(${PROJECT_NAME}_LIBS
+  coverage_config
+)
+
+set(${PROJECT_NAME}_INCLUDE_DIRS
+  ${CMAKE_CURRENT_SOURCE_DIR}
+)
+
+add_library(${PROJECT_NAME} ${${PROJECT_NAME}_SRCS})
+
+target_link_libraries(${PROJECT_NAME} PUBLIC ${${PROJECT_NAME}_LIBS})
+
+target_include_directories(${PROJECT_NAME} PUBLIC ${${PROJECT_NAME}_INCLUDE_DIRS})
