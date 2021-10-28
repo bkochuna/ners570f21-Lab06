@@ -36,13 +36,31 @@ void CRS<fp_type>::getCRS(std::vector<fp_type> &vals, std::vector<size_t> &ia, s
 
 }
 
+template <class fp_type>
+std::vector<fp_type> CRS<fp_type>::getValues() {
+    return this->_vals;
+}
+
+template <class fp_type>
+std::vector<fp_type> CRS<fp_type>::getRowsIndices() {
+    return this->_ia;
+}
+
+template <class fp_type>
+std::vector<fp_type> CRS<fp_type>::getColsIndices() {
+    return this->_ja;
+}
+
 template class CRS<float>;
 template class CRS<double>;
 
 
 template <class fp_type>
 std::vector<fp_type> vecMult(CRS<fp_type> &mat, std::vector<fp_type> &vec) {
-    
+    std::vector<fp_type> ia = mat.getRowsIndices();
+    std::vector<fp_type> ja = mat.getColsIndices();
+    std::vector<fp_type> vals = mat.getValues();
+
 }
 
 }

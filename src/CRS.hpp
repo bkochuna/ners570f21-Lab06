@@ -43,6 +43,37 @@ class CRS : public SparseMatrix<fp_type>
             ia   : row indices, size _nrows + 1
         */
         void getCRS(std::vector<fp_type> &vals, std::vector<size_t> &ia, std::vector<size_t> &ja) const override;
+
+        /*
+            Function : getValues
+                Get non zero values in the matrix as a vector
+            
+            Parameters
+            ----------
+            None
+        */
+        std::vector<fp_type> getValues();
+
+        /*
+            Function : getRowsIndices
+                Get non zero values rows indices
+            
+            Parameters
+            ----------
+            None
+        */
+        std::vector<fp_type> getRowsIndices();
+
+        /*
+            Function : getColsIndices
+                Get non zero values columns indices
+            
+            Parameters
+            ----------
+            None
+        */
+        std::vector<fp_type> getColsIndices();
+
 };
 }
 
