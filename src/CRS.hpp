@@ -20,10 +20,7 @@ class CRS : public SparseMatrix<fp_type>
 
     public:
         //This is the constructor
-        CRS(const size_t nrows, const size_t ncols):SparseMatrix<fp_type>(nrows, ncols){
-            nrows = nrows;
-            ncols = ncols;
-        };
+        CRS(const size_t nrows, const size_t ncols):SparseMatrix<fp_type>(nrows, ncols){};
 
         /*
             Function : setCoefficients
