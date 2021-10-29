@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+rm -rf build || true
+
 mkdir -p build && cd build
 
 # mac nproc support
