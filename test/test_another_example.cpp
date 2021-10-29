@@ -1,12 +1,8 @@
 #include "unit_test_framework.h"
 
-TEST(test_true) {
-  ASSERT_TRUE(true);
-}
+TEST(test_true) { ASSERT_TRUE(true); }
 
-TEST(test_false) {
-  ASSERT_FALSE(false);
-}
+TEST(test_false) { ASSERT_FALSE(false); }
 
 TEST(test_almost_equal) {
   FP_TYPE a = 1.;
