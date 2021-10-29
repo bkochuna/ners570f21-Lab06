@@ -24,7 +24,7 @@ cmake --build . --config Debug -- -j $(nproc)
 ctest -j $(nproc) --output-on-failure
 
 pip install -r ../requirements.txt
-PYTHONPATH="$PYTHONPATH:$(pwd)/src" pytest ../
+PYTHONPATH="$PYTHONPATH:$(pwd)/src" pytest ../test
 lcov --directory . --capture --output-file coverage.info
-lcov --remove coverage.info -o coverage.info '*/usr/*' '*/test/*' "${HOME}"'/.cache/*'
+lcov --remove coverage.info -o coverage.info '*/usr/*' '*/test/*' '*/extern/*' "${HOME}" '/.cache/*' '*pythonWrap.cpp'
 lcov --list coverage.info # debug info

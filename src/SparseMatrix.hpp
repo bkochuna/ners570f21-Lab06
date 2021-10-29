@@ -20,6 +20,9 @@ public:
   SparseMatrix(const size_t nrows, const size_t ncols)
       : _nrows(nrows), _ncols(ncols), _nz(0){};
 
+  // virtual dtor
+  virtual ~SparseMatrix(){};
+
   /*
         Function : setCoefficients
           Builds a sparse matrix

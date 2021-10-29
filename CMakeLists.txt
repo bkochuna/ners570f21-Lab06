@@ -16,6 +16,9 @@ hello("Some directory")
 # Python Wrapper config
 option (BUILD_PYTHON "Build the Python Wrapper." ON)
 set(PYTHON_PROJECT_NAME ${PROJECT_NAME}py)
+if (BUILD_PYTHON)
+  add_subdirectory(extern/pybind11)
+endif(BUILD_PYTHON)
 
 # Code Coverage Configuration
 add_library(coverage_config INTERFACE)
