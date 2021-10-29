@@ -9,9 +9,5 @@ This repository is for an educational exercise that is a part of NERS570 course 
 - gcc compiler
 - cmake
 - (optional) pythonWrapper requires
-  - boost
+  - pybind11 submodule `git submodule update --init --recursive`
   - python 3.9
-
-# How to use boost
-- mac: `brew install boost boost-python3`
-- greatlakes: `module load gcc cmake boost python`
