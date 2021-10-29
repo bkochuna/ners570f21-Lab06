@@ -1,6 +1,10 @@
 #ifndef _PYTHON_WRAP_
 #define _PYTHON_WRAP_
+#include "BCRS.hpp"
 #include "COO.hpp"
+#include "CRS.hpp"
+#include "ELLPACK.hpp"
+#include "JDS.hpp"
 #include <boost/python.hpp>
 #include <map>
 
