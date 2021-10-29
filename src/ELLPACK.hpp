@@ -13,13 +13,71 @@ template <class fp_type>
 class ELLPACK : public SparseMatrix<fp_type>
 {
     private:
-        std::vector<fp_type> _vals;
-        std::vector<std::vector<size_t> > _ja;
-        size_t _maxnz_row;
+        double* _vals_array;
+        double* _index_array;
+        int _ellrows;
+	int _ellcols;
 
     public:
-        //This is the constructor
-        ELLPACK(const size_t nrows, const size_t ncols):SparseMatrix<fp_type>(nrows, ncols), _maxnz_row(0) {};
+        //Constructor from array
+	template<unsigned int rows, unsigned int cols>
+        ELLPACK(double (&a)[rows][cols]):SparseMatrix<fp_type>(rows, cols) {
+		int maxcols = 0;
+		int nrows = 0;
+		int nzrow = 0;
+		for (int i=0; i<_nrows;i++){
+			nzrow = 0;
+			for (int j=0; j<_ncols;j++){
+				if (a[i][j] != 0){
+					nzrow += 1;
+
+				}
+			}
+			if (nzrow>0){
+				nrows += 1;
+				if (nzrow > maxcols){
+					maxcols = nzrow;
+				}
+			}
+		}		
+		_ellrows = nrows;
+		_ellcols = maxcols;
+		_vals_array = new double[nrows][maxcols];
+		_index_array = new double[nrows][maxcols];
+		for (int i=0; i<_nrows;i++){
+			nzrow = 0;
+			for (int j=0; j<_ncols;j++){
+				_vals_array[i,nzrow] = 0;
+				_index_array[i,nzrow] = 0;
+				if (a[i][j] != 0){
+					_vals_array[i,nzrow] = a[i,j];
+					_index_array[i,nzrow] = j;
+					nzrow += 1;	
+				}else{
+				}
+			}
+		}
+		
+		
+	};
+	
+	// Use paranthesis operator to access elements in the matrix
+	double& operator()(int i, int j){
+		return getData(i,j); }
+	double operator()(int i, int j) const {
+		return getData(i,j); }	
+
+	/*
+	    Function : getData
+   		get matrix data from the ELLPACK format given indices of the overall matrix
+    	
+	    Paramters
+	    --------
+		i, j = row, column index of the element in overall matrix		
+
+	*/
+	double getData(int i, int j);
+
 
         /*
             Function : setCoefficients
