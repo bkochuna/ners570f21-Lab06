@@ -66,7 +66,7 @@ jobs:
           # filter out system and extra files.
           lcov --remove coverage.info -o coverage.info '*/usr/*' '*/test/*' '*/extern/*' "${HOME}" '/.cache/*' '*pythonWrap.cpp'
           # debug
-          # lcov --list coverage.info # debug info
+          lcov --list coverage.info # debug info
           # Uploading to CodeCov
           # '-f' specifies file(s) to use and disables manual coverage gathering and file search which has already been done above
           # bash <(curl -s https://codecov.io/bash) -f coverage.info || echo "Codecov did not collect coverage reports"
